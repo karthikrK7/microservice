@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: development
+    include: development
+---
+spring:
+  profiles: development
+spring.datasource:
+  url: jdbc:mysql://localhost:3306/learning
+  username: root
+  password: root
+spring.jpa.properties:
+  hibernate:
+    dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:  
+      ddl-auto: create  
+server:
+  port: 8761
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+    statusPageUrl: https://${eureka.hostname}/info
+    healthPageUrl: https://${eureka.hostname}/health
+    prefer-ip-address: true
+    homePageUrl: https://${eureka.hostname}/
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defauktZone: http://${eureka.instance.hostname}:${server.port}/eurela/
